@@ -1,37 +1,43 @@
 doctype html
 html(lang='en')
     head
-        title Argon2 token generator
+        title Argon2 hash generator
         include includes/metas
         include includes/styles
-    body(class='hero is-fullheight')
-        div(class='columns')
-            div(class='column is-centered')
-                h3(class='subtitle has-text-centered') Argon2 Hash generator
-                form#generate(action='/generate', method='post')
-                    div( class='field has-addons has-addons-centered')
-                        div( class='control')
-                            input(type='text', name='word', placeholder='your word or phrase', class='input is-rounded')
-                        div( clas='control')
-                            input(type='submit', value='Generate', class='button is-link has-background-primary')
-        div(class='columns is-multiline is-centered')
-            if( hash )
-            - const newHash = JSON.parse( hash )
-            - const { versionName, versionNumber, iterations, memoryUsage, generatedHash, error }= newHash
-            div(class='column is-narrow has-text-right has-background-primary')
-                p your word/phrase :
-                p Encoded with Argon2 using:
-                p Hash type:
-                p Version:
-                p Iterarions:
-                p Memory usage in Kb:
-                p Generated Hash:
-            div(class='column is-narrow has-text-left has-text-white has-background-primary')
-                p #{word}
-                br
-                p #{versionName}
-                p #{versionNumber}
-                p #{iterations}
-                p #{memoryUsage}
-                p(class='subheader') #{generatedHash}
-                p(class='has-text-centered has-text-danger') #{error}
+    body(class='bg-light')
+        div(class='container-fluid')
+            //- Header
+            div(class='row justify-content-center')
+                div(class='col-auto')
+                    h1(class='text-info mt-4 mb-4') Argon2 Hash test
+
+            div(class='row justify-content-center')
+                div(class='col-auto')
+                    h3(class='text-info mt-4 mb-4') Generate
+            
+            //- Form to generate Hash
+            div(class='row justify-content-md-center')
+                div(class='col-auto')
+                //- use default form
+                if( !hash )
+                    include parts/form_base
+                    
+                //- use form with retained data
+                if( hash )
+                    include parts/form_hashed
+                    
+                        //- Show results
+                    include parts/results_generate.pug
+                    div(class='row mt-2')
+                        div(class='col-auto')
+                            ul(class='list-group shadow')
+                                li(class='list-group-item' ) Full Hash &nbsp;
+                                    span(class='badge badge-info') #{fullHash}
+            
+            div(class='row justify-content-center')
+                div(class='col-auto')
+                    h3(class='text-info mt-4 mb-4') Verify
+            
+            div(class='row')
+                div(class='col')
+                    include parts/form_verify

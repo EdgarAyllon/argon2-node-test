@@ -1,0 +1,46 @@
+//- Default form
+//- Input for unhashed 'word'
+form#generate(action='/generate', method='post')
+    div(class='input-group input-group-sm mb-3')
+        div(class='input-group-prepend')
+            span(class='input-group-text') Word or phrase 
+        input(type='text', name='word', value='', maxlength='50', class='form-control')
+    
+    //- Error message when input 'word' is empty
+    if( wordError )
+        div(class='alert alert-danger') #{ wordError }
+    
+    //- Variant
+    div(class='input-group input-group-sm mb-3 d-flex justify-content-between align-items-center')
+        div(class='input-group-prepend')
+            span(class='input-group-text') Variant
+        div(class='form-check')
+            input#variant1( type='radio', name='versionName', value='argon2d',class='form-check-input')
+            label( for='variant1', class='form-check-label') argon2d
+        div(class='form-check') 
+            input#variant2( type='radio', name='versionName', value='argon2i',class='form-check-input' )
+            label( for='variant2', class='form-check-label') argon2i
+        div(class='form-check')
+            input#variant3( type='radio', name='versionName', value='argon2id',class='form-check-input', checked)
+            label( for='variant3', class='form-check-label') argon2id
+    
+    //- Hash Length
+    div(class='input-group input-group-sm mb-3')
+        div(class='input-group-prepend')
+            span(class='input-group-text') Hash Length
+        input( type='number', name='hashLength', value='32', min='4',max='50', class='form-control')
+    
+    //- Time Cost
+    div(class='input-group input-group-sm mb-3')
+        div(class='input-group-prepend')
+            span(class='input-group-text') Iterations ( time cost )
+        input( type='number', name='timeCost', value='3', min='1',max='10', class='form-control')
+    
+    //- Parallelism
+    div(class='input-group input-group-sm mb-3')
+        div(class='input-group-prepend')
+            span(class='input-group-text') Threads ( parallelism )
+        input( type='number', name='parallelism', value='2' , min='1', max='50', class='form-control')
+    
+    div(class='form-row justify-content-center')
+        Button(type='submit', class='btn btn-outline-primary float-right') Generate

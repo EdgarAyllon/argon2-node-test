@@ -1,0 +1,26 @@
+//- Form for verify password match
+form#verify(action='/verify', method='post')
+    div(class='form-row justify-content-center')
+        div( class='form-group col-md-6')
+            div(class='input-group input-group-sm mb-3')
+                div(class='input-group-prepend')
+                    span(class='input-group-text') Word or phrase to verify
+                input(type='text', name='expectedPassword', value=expectedPassword ? expectedPassword : '', maxlength='50', class='form-control')
+
+            div(class='input-group input-group-md mb-3')
+                div(class='input-group-prepend')
+                    span(class='input-group-text') Argon Hashed password 
+                input(type='text', name='expectedHash', value=expectedHash ?expectedHash : '', class='form-control')
+
+    div(class='form-row justify-content-center')
+        
+        //- Error message when fields are empty or Hash check is invalid
+        if( errorFields )
+            div(class='alert alert-danger col-auto') #{ errorFields }
+
+        //- Message to show validation resulta
+        if( verification )
+            div(class=`alert ${ verification ? 'alert-success' : 'alert-danger' } col-auto`) #{ verification ? 'Password match' : 'Wrong password' }
+    
+    div(class='form-row justify-content-center')
+        Button(type='submit', class='btn btn-outline-primary') Verify

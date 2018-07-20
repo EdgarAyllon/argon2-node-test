@@ -1,0 +1,26 @@
+
+//- No error on generate hash
+if( !error )
+    
+    //- Results when hash is generated    
+    div( class='col-sm col-md-auto')
+        ul(class='list-group shadow')
+            li(class='list-group-item d-flex justify-content-between align-items-center') Unhashed word/phrase &nbsp;
+                span(class='badge badge-primary', style='max-width:100px; overflow: hidden; text-overflow: ellipsis') #{word}
+            li(class='list-group-item d-flex justify-content-between align-items-center') Variant
+                span(class='badge badge-primary') #{versionName}
+            li(class='list-group-item d-flex justify-content-between align-items-center') Version
+                span(class='badge badge-primary') #{versionNumber}
+            li(class='list-group-item d-flex justify-content-between align-items-center') hashLength
+                span(class='badge badge-primary') #{hashLength}
+            li(class='list-group-item d-flex justify-content-between align-items-center') Iterations
+                span(class='badge badge-primary') #{timeCost}
+            li(class='list-group-item d-flex justify-content-between align-items-center') Threads 
+                span(class='badge badge-primary') #{parallelism}
+            li(class='list-group-item d-flex justify-content-between align-items-center') Memory usage
+                span(class='badge badge-primary') #{memoryCost} Kb
+
+//- Hash has errors on generation
+if( error )
+
+    div(class='alert alert-danger') Error: #{error}

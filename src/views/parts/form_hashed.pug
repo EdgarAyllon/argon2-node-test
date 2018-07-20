@@ -1,0 +1,44 @@
+- const { hashLength, timeCost, parallelism, versionName, versionNumber, memoryCost, fullHash, error } = hash
+//- Form with vars
+form#generate(action='/generate', method='post')
+
+    //- Input for unhashed 'word'
+    div(class='input-group input-group-sm mb-3')
+        div(class='input-group-prepend')
+            span(class='input-group-text') Word or phrase 
+        input(type='text', name='word', value=word ? word : '', maxlength='50', class='form-control')
+
+    //- Variant
+    div(class='input-group input-group-sm mb-3 d-flex justify-content-between align-items-center')
+        div(class='input-group-prepend')
+            span(class='input-group-text') Variant
+        div(class='form-check')
+            input#variant1( type='radio', name='versionName', checked=versionName==='argon2d', value='argon2d', class='form-check-input')
+            label( for='variant1', class='form-check-label') argon2d
+        div(class='form-check') 
+            input#variant2( type='radio', name='versionName', checked=versionName==='argon2i', value='argon2i',class='form-check-input' )
+            label( for='variant2', class='form-check-label') argon2i
+        div(class='form-check')
+            input#variant3( type='radio', name='versionName', checked=versionName==='argon2id', value='argon2id',class='form-check-input')
+            label( for='variant3', class='form-check-label') argon2id
+
+    //- Hash length
+    div(class='input-group input-group-sm mb-3')
+        div(class='input-group-prepend')
+            span(class='input-group-text') Hash Length
+        input( type='number', name='hashLength', value=hashLength, min='4',max='50', class='form-control')
+
+    //- Iterations
+    div(class='input-group input-group-sm mb-3')
+        div(class='input-group-prepend')
+            span(class='input-group-text') Iterations ( time cost )
+        input( type='number', name='timeCost', value=timeCost, min='1',max='10', class='form-control')
+
+    //- Parallelism
+    div(class='input-group input-group-sm mb-3')
+        div(class='input-group-prepend')
+            span(class='input-group-text') Threads ( parallelism )
+        input( type='number', name='parallelism', value=parallelism , min='1', max='50', class='form-control')
+    
+    div(class='form-row justify-content-center mb-4')
+        Button(type='submit', class='btn btn-outline-primary float-right') Generate

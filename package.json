@@ -1,0 +1,20 @@
+{
+  "name": "tokengenerator",
+  "version": "1.0.0",
+  "description": "Generate a secure token using Argon2",
+  "main": "src/index.js",
+  "author": "Edgar Ayllon",
+  "license": "MIT",
+  "scripts":{
+    "start" : "node src/index.js"
+  },
+  "dependencies": {
+    "argon2": "^0.19.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "hpp": "^0.2.2",
+    "pug": "^2.0.3"
+  }
+}

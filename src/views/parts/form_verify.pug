@@ -20,7 +20,7 @@ form#verify(action='/verify', method='post')
 
         //- Message to show validation resulta
         if( verification )
-            div(class=`alert ${ verification === true ? 'alert-success' : 'alert-danger' } col-auto`) #{ verification === true ? 'Password match' : 'Wrong password' }
+            div(class='alert alert-info col-auto`) #{ verification  }
     
     div(class='form-row justify-content-center')
         Button(type='submit', class='btn btn-outline-primary') Verify

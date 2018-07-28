@@ -8,8 +8,8 @@ const
     app = express(),
     bodyParser = require('body-parser'),
     routes = require('./routes'),
-    PORT = process.env.PORT || 8080,
-    HOST = process.env.HOST || 'localhost';
+    PORT = process.env.PORT,
+    HOST = process.env.HOST;
 
 // Settings
 app.use(

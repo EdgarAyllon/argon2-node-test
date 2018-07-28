@@ -44,4 +44,6 @@ package-lock.json
 yarn.lock
 *.log
 
+#environment
+.env
 # End of https://www.gitignore.io/api/macos

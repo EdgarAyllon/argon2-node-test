@@ -20,9 +20,9 @@ module.exports = async (req, res) => {
     else 
         verification = await argon2.verify(expectedHash, expectedPassword)
 
-                                   .then(match => `result ${match ? 'good' : 'wrong'} password` )
+                                   .then(match => `Password ${match ? 'match' : 'no match'}` )
 
-                                   .catch(error => ({ errorOnProcess: error.message }));
+                                   .catch(error => error.message );
 
     res.render('index', { errorFields, expectedPassword, expectedHash, verification })
 }
